@@ -1,0 +1,99 @@
+@import '../styles/variables/sizes'
+@import '../styles/variables/colors'
+
+.form
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    
+.form-field
+    display: flex
+    width: fit-content
+    min-width: 75px
+    max-width: 366px
+    width: 100%
+    position: relative
+    margin: 10px 0
+    &:hover
+        .form-field-password-icon
+            visibility: visible
+    label
+        position: absolute
+        z-index: 2
+        top: 16px
+        left: 14px
+        padding: 0 7px
+        transition: .2s all ease
+        pointer-events: none
+        font-size: 16px
+    input
+        background: black
+        width: 100%
+        height: 54px
+        font-size: 16px
+        padding: 13px 15px
+        border-radius: $border-radius
+        outline: none
+        &:focus
+            outline: none
+            border-color: $corporative-color
+            + label
+                color: $corporative-color
+        &:not(:placeholder-shown) + label,
+        &:focus + label
+            top: -10px
+            left: 7px
+            background: #010101
+            transform: scale(.75)
+    input.outlined
+        background: none
+        border: 2px solid white
+        color: invert(black)
+    svg
+        position: absolute
+        stroke: white
+        z-index: 2
+    .form-field-password-icon
+        position: absolute
+        right: 14px
+        top: 16px
+        background: black
+        padding-left: 7px
+        visibility: hidden
+
+.form-field-error, .form-field-warning
+    display: flex
+    justify-content: left
+    align-items: center
+    padding: 15px 20px
+    border-left: 2px solid red
+    background: rgba(red, 0.15)
+    min-width: 75px
+    max-width: 366px
+    font-size: 14px
+    border-top-right-radius: 5px
+    border-bottom-right-radius: 5px
+    .form-field-error-content, .form-field-warning-content
+        display: flex
+        gap: 10px
+        align-items: center
+
+.form-field-error
+        .form-field-error-text, .form-field-error-icon
+            color: red
+            display: flex
+            align-items: center
+            svg
+                stroke: red
+
+.form-field-warning
+    border-left-color: yellow
+    background: rgba(yellow,0.15 )
+    margin-top: 10px
+    .form-field-warning-text, .form-field-warning-icon
+        color: yellow
+        display: flex
+        align-items: center
+        svg
+            stroke: yellow

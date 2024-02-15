@@ -1,0 +1,32 @@
+@import '../styles/base/variables'
+    
+button.standard-button
+    background: $corporative-color
+    padding: 10px 20px
+    display: flex
+    justify-content: center
+    align-items: center
+    min-width: 100px
+    border-radius: $border-radius
+    border: none
+    cursor: pointer
+    transition: background-color .2s ease
+    &:active
+        background-color: $corporative-color-2
+
+button.inverted-button
+    background: none
+    border: 2px solid #f2f2f2
+    border-radius: 5px
+    padding: 5px
+    cursor: pointer
+    display: flex
+    justify-content: center
+    align-items: center
+    &:active
+        background: rgba(black, 0.1)
+
+button.invisible-button
+    background: none
+    border: none
+    cursor: pointer
