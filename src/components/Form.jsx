@@ -4,7 +4,7 @@ import {
   IconExclamationCircle,
   IconAlertTriangle,
 } from "@tabler/icons-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Form.sass";
 import { Logo } from "../App";
 
@@ -34,16 +34,32 @@ export function FormField({
   placeholder = "",
   error = null,
   warning = null,
+  required = false,
+  showHints = false,
 }) {
   const [fieldType, setFieldType] = useState(type);
 
+  const [hasError, setError] = useState(error);
   const changeType = () => {
     setFieldType(fieldType == "password" ? "text" : "password");
   };
+  useEffect(() => {
+    if (required && showHints) {
+      if (value == "") {
+        setError("El campo no puede estar vacío");
+      } else {
+        setError(null);
+      }
+    }
+  }, [showHints, value]);
 
   return (
     <>
-      <div className={"form-field " + className}>
+      <div
+        className={
+          "form-field " + className + (hasError != null ? " error" : "")
+        }
+      >
         <input
           type={fieldType}
           id={label}
@@ -69,7 +85,7 @@ export function FormField({
           ""
         )}
       </div>
-      {error != null ? <FormFieldError>{error}</FormFieldError> : ""}
+      {hasError != null ? <FormFieldError>{hasError}</FormFieldError> : ""}
       {warning != null ? <FormFieldWarning>{warning}</FormFieldWarning> : ""}
     </>
   );
@@ -117,4 +133,8 @@ export function FormFieldWarning({ icon = <IconAlertTriangle />, children }) {
       </div>
     </div>
   );
+}
+
+export function FormStatus({ children }) {
+  return <div className="form-status">{children}</div>;
 }

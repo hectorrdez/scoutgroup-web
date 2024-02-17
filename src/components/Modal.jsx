@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Form, FormComponents, FormHeader } from "./Form";
+import "./Modal.sass";
 
 export function Modal({ children, className = "" }) {
   const [classes, setClasses] = useState(

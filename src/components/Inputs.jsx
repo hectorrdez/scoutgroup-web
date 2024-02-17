@@ -9,6 +9,8 @@ export function TextField({
   className = "",
   error = null,
   warning = null,
+  required = false,
+  showHints = false,
 }) {
   return (
     <FormField
@@ -17,6 +19,10 @@ export function TextField({
       onChange={onChange}
       type={"text"}
       className={"text-field " + className}
+      error={error}
+      warning={warning}
+      required={required}
+      showHints={showHints}
     >
       {children}
     </FormField>
@@ -29,6 +35,8 @@ export function OutlinedTextField({
   onChange,
   error = null,
   warning = null,
+  required = false,
+  showHints = false,
 }) {
   return (
     <FormField
@@ -36,6 +44,10 @@ export function OutlinedTextField({
       value={value}
       onChange={onChange}
       className="outlined"
+      error={error}
+      warning={warning}
+      required={required}
+      showHints={showHints}
     >
       {children}
     </FormField>
@@ -45,8 +57,11 @@ export function PassField({
   label,
   children,
   value,
-  onChangeerror = null,
+  onChange,
+  error = null,
   warning = null,
+  showHints = false,
+  required = true,
 }) {
   return (
     <FormField
@@ -54,6 +69,10 @@ export function PassField({
       value={value}
       onChange={onChange}
       type={"password"}
+      error={error}
+      warning={warning}
+      showHints={showHints}
+      required={required}
     >
       {children}
     </FormField>
@@ -66,6 +85,8 @@ export function OutlinedPassField({
   onChange,
   error = null,
   warning = null,
+  showHints = false,
+  required = true,
 }) {
   return (
     <FormField
@@ -74,6 +95,10 @@ export function OutlinedPassField({
       onChange={onChange}
       type={"password"}
       className={"outlined"}
+      error={error}
+      warning={warning}
+      showHints={showHints}
+      required={required}
     >
       {children}
     </FormField>
